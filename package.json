@@ -35,5 +35,14 @@
     "README.md",
     "source",
     "build"
-  ]
+  ],
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogerbf/etaoin-srhldcu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rogerbf/etaoin-srhldcu/issues"
+  },
+  "homepage": "https://github.com/rogerbf/etaoin-srhldcu#readme"
 }
