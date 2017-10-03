@@ -28,12 +28,26 @@ const letterFrequency = [
 ]
 
 const wordLengthFrequency = [
-  [ 2, 22 ],
-  [ 3, 26 ],
-  [ 4, 18 ],
-  [ 5, 13 ],
-  [ 6, 11 ],
-  [ 7, 10 ]
+  [ 1, 2998 ],
+  [ 2, 17651 ],
+  [ 3, 20551 ],
+  [ 4, 14787 ],
+  [ 5, 10700 ],
+  [ 6, 8388 ],
+  [ 7, 7939 ],
+  [ 8, 5943 ],
+  [ 9, 4437 ],
+  [ 10, 3076 ],
+  [ 11, 1761 ],
+  [ 12, 958 ],
+  [ 13, 518 ],
+  [ 14, 222 ],
+  [ 15, 76 ],
+  [ 16, 20 ],
+  [ 17, 10 ],
+  [ 18, 4 ],
+  [ 19, 1 ],
+  [ 20, 1 ]
 ]
 
 const pools = {
@@ -65,4 +79,4 @@ const makeSentence = (characters = 60, result = ``) =>
     ? result.slice(1).concat(`.`)
     : makeSentence(characters, result.concat(` ${ makeWord() }`))
 
-export default makeSentence
+export default { makeSentence, wordLengthFrequency }
