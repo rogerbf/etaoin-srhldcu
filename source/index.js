@@ -27,7 +27,19 @@ const letterFrequency = [
   [ `e`, 1249 ]
 ]
 
-const random = (max, min = 1) => Math.floor(Math.random() * max) + min
+const randomLetter = (
+  frequencyMap = letterFrequency.slice(1),
+  [ letter, frequency ] = frequencyMap.slice(0, 1).pop(),
+  n = Math.floor(Math.random() * 1249) + 1
+) => {
+  const current = frequencyMap.slice(0, 1).pop()
+  const next = frequencyMap.slice(1)
+  if ((current[1] > n) || (next.length === 0)) {
+    return letter
+  } else {
+    return randomLetter(next, current, n)
+  }
+}
 
 const wordLengthFrequency = [
   [ 1, 2230122 ],
