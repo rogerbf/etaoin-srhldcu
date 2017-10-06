@@ -27,6 +27,8 @@ const letterFrequency = [
   [ `z`, 9 ]
 ]
 
+const random = (max, min = 1) => Math.floor(Math.random() * max) + min
+
 const wordLengthFrequency = [
   [ 1, 2230122 ],
   [ 2, 13129385 ],
