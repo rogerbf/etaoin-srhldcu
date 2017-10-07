@@ -42,30 +42,44 @@ const randomLetter = (
 }
 
 const wordLengthFrequency = [
-  [ 1, 2230122 ],
-  [ 2, 13129385 ],
-  [ 3, 15256838 ],
-  [ 4, 10998833 ],
-  [ 5, 7958932 ],
-  [ 6, 6239121 ],
-  [ 7, 5905266 ],
-  [ 8, 4420729 ],
-  [ 9, 3300693 ],
-  [ 10, 2288384 ],
-  [ 11, 1309806 ],
-  [ 12, 712415 ],
-  [ 13, 385058 ],
-  [ 14, 165308 ],
-  [ 15, 56524 ],
-  [ 16, 15122 ],
-  [ 17, 7281 ],
-  [ 18, 2862 ],
-  [ 19, 851 ],
-  [ 20, 635 ],
   [ 21, 13 ],
+  [ 23, 32 ],
   [ 22, 81 ],
-  [ 23, 32 ]
+  [ 20, 635 ],
+  [ 19, 851 ],
+  [ 18, 2862 ],
+  [ 17, 7281 ],
+  [ 16, 15122 ],
+  [ 15, 56524 ],
+  [ 14, 165308 ],
+  [ 13, 385058 ],
+  [ 12, 712415 ],
+  [ 11, 1309806 ],
+  [ 1, 2230122 ],
+  [ 10, 2288384 ],
+  [ 9, 3300693 ],
+  [ 8, 4420729 ],
+  [ 7, 5905266 ],
+  [ 6, 6239121 ],
+  [ 5, 7958932 ],
+  [ 4, 10998833 ],
+  [ 2, 13129385 ],
+  [ 3, 15256838 ]
 ]
+
+const randomWordLength = (
+  frequencyMap = wordLengthFrequency.slice(1),
+  [ length, frequency ] = frequencyMap.slice(0, 1).pop(),
+  n = Math.floor(Math.random() * 15256838) + 1
+) => {
+  const current = frequencyMap.slice(0, 1).pop()
+  const next = frequencyMap.slice(1)
+  if ((current[1] > n) || (next.length === 0)) {
+    return length
+  } else {
+    return randomWordLength(next, current, n)
+  }
+}
 
 const pools = {
   letters: letterFrequency.reduce(
