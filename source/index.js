@@ -29,10 +29,10 @@ const letterFrequency = [
 
 const randomLetter = (
   frequencyMap = letterFrequency.slice(1),
-  [ letter, frequency ] = frequencyMap.slice(0, 1).pop(),
+  [ letter, frequency ] = frequencyMap[0],
   n = Math.floor(Math.random() * 1249) + 1
 ) => {
-  const current = frequencyMap.slice(0, 1).pop()
+  const current = frequencyMap[0]
   const next = frequencyMap.slice(1)
   if ((current[1] > n) || (next.length === 0)) {
     return letter
@@ -69,10 +69,10 @@ const wordLengthFrequency = [
 
 const randomWordLength = (
   frequencyMap = wordLengthFrequency.slice(1),
-  [ length, frequency ] = frequencyMap.slice(0, 1).pop(),
+  [ length, frequency ] = frequencyMap[0],
   n = Math.floor(Math.random() * 15256838) + 1
 ) => {
-  const current = frequencyMap.slice(0, 1).pop()
+  const current = frequencyMap[0]
   const next = frequencyMap.slice(1)
   if ((current[1] > n) || (next.length === 0)) {
     return length
@@ -81,33 +81,17 @@ const randomWordLength = (
   }
 }
 
-const pools = {
-  letters: letterFrequency.reduce(
-    (accumulator, [ letter, frequency ]) =>
-      accumulator.concat(Array(frequency).fill(letter)),
-    []
-  ),
-  wordLengths: wordLengthFrequency.reduce(
-    (accumulator, [ length, frequency ]) =>
-      accumulator.concat(Array(frequency).fill(length)),
-    []
-  )
-}
-
-const getRandomLetter = () =>
-  pools.letters[Math.floor(Math.random() * pools.letters.length)]
-const getRandomWordLength = () =>
-  pools.wordLengths[Math.floor(Math.random() * pools.wordLengths.length)]
+const randomSentenceLength = () => Math.floor(Math.random() * 10) + 50
 
 const makeWord = () =>
-  Array(getRandomWordLength())
+  Array(randomWordLength())
     .fill(undefined)
-    .map(getRandomLetter)
+    .map(() => randomLetter())
     .join(``)
 
-const makeSentence = (characters = 60, result = ``) =>
+const makeSentence = (characters = randomSentenceLength(), result = ``) =>
   result.length + 1 >= characters
     ? result.slice(1).concat(`.`)
     : makeSentence(characters, result.concat(` ${ makeWord() }`))
 
-export default { makeSentence, wordLengthFrequency }
+export default makeSentence
