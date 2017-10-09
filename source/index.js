@@ -89,9 +89,9 @@ const makeWord = () =>
     .map(() => randomLetter())
     .join(``)
 
-const makeSentence = (characters = randomSentenceLength(), result = ``) =>
-  result.length + 1 >= characters
-    ? result.slice(1).concat(`.`)
-    : makeSentence(characters, result.concat(` ${ makeWord() }`))
+const makeSentence = (characters = randomSentenceLength(), sentence = ``) =>
+  sentence.length + 1 >= characters
+    ? sentence.slice(1).concat(`.`)
+    : makeSentence(characters, sentence.concat(` ${ makeWord() }`))
 
 export default makeSentence
