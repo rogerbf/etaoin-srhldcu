@@ -1,3 +1,5 @@
+const randomNumber = ({ min, max }) => Math.floor(Math.random() * (1 + max - min)) + min
+
 const letterFrequency = [
   [ `z`, 9 ],
   [ `q`, 12 ],
@@ -30,7 +32,7 @@ const letterFrequency = [
 const randomLetter = (
   frequencyMap = letterFrequency.slice(1),
   [ letter, frequency ] = frequencyMap[0],
-  n = Math.floor(Math.random() * 1249) + 1
+  n = randomNumber({ min: 1, max: 1249 })
 ) => {
   const current = frequencyMap[0]
   const next = frequencyMap.slice(1)
@@ -70,7 +72,7 @@ const wordLengthFrequency = [
 const randomWordLength = (
   frequencyMap = wordLengthFrequency.slice(1),
   [ length, frequency ] = frequencyMap[0],
-  n = Math.floor(Math.random() * 15256838) + 1
+  n = randomNumber({ min: 1, max: 15256838 })
 ) => {
   const current = frequencyMap[0]
   const next = frequencyMap.slice(1)
@@ -81,7 +83,7 @@ const randomWordLength = (
   }
 }
 
-const randomSentenceLength = () => Math.floor(Math.random() * 10) + 50
+const randomSentenceLength = randomNumber.bind(null, { min: 50, max: 60 })
 
 const makeWord = () =>
   Array(randomWordLength())
