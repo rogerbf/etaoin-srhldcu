@@ -78,7 +78,7 @@ export const word = () =>
     .map(() => randomLetter())
     .join(``)
 
-export const sentence = (characters = randomSentenceLength(), sentence = ``) =>
-  sentence.length + 1 >= characters
-    ? sentence.slice(1).concat(`.`)
-    : sentence(characters, sentence.concat(` ${ word() }`))
+export const sentence = (characters = randomSentenceLength(), result = ``) =>
+  result.length + 1 >= characters
+    ? result.slice(1).concat(`.`)
+    : sentence(characters, result.concat(` ${ word() }`))
