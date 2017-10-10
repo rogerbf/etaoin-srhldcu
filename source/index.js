@@ -85,15 +85,13 @@ const randomWordLength = (
 
 const randomSentenceLength = randomNumber.bind(null, { min: 50, max: 60 })
 
-const makeWord = () =>
+export const word = () =>
   Array(randomWordLength())
     .fill(undefined)
     .map(() => randomLetter())
     .join(``)
 
-const makeSentence = (characters = randomSentenceLength(), sentence = ``) =>
+export const sentence = (characters = randomSentenceLength(), sentence = ``) =>
   sentence.length + 1 >= characters
     ? sentence.slice(1).concat(`.`)
-    : makeSentence(characters, sentence.concat(` ${ makeWord() }`))
-
-export default makeSentence
+    : sentence(characters, sentence.concat(` ${ word() }`))
