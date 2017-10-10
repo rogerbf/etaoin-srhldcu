@@ -1,4 +1,5 @@
-const randomNumber = ({ min, max }) => Math.floor(Math.random() * (1 + max - min)) + min
+const randomNumber = ({ min, max }) =>
+  Math.floor(Math.random() * (1 + max - min)) + min
 
 const letterFrequency = [
   [ `z`, 9 ],
@@ -29,20 +30,6 @@ const letterFrequency = [
   [ `e`, 1249 ]
 ]
 
-const randomLetter = (
-  frequencyMap = letterFrequency.slice(1),
-  [ letter, frequency ] = frequencyMap[0],
-  n = randomNumber({ min: 1, max: 1249 })
-) => {
-  const current = frequencyMap[0]
-  const next = frequencyMap.slice(1)
-  if ((current[1] > n) || (next.length === 0)) {
-    return letter
-  } else {
-    return randomLetter(next, current, n)
-  }
-}
-
 const wordLengthFrequency = [
   [ 21, 13 ],
   [ 23, 32 ],
@@ -69,19 +56,19 @@ const wordLengthFrequency = [
   [ 3, 15256838 ]
 ]
 
-const randomWordLength = (
-  frequencyMap = wordLengthFrequency.slice(1),
-  [ length, frequency ] = frequencyMap[0],
-  n = randomNumber({ min: 1, max: 15256838 })
-) => {
-  const current = frequencyMap[0]
-  const next = frequencyMap.slice(1)
-  if ((current[1] > n) || (next.length === 0)) {
-    return length
-  } else {
-    return randomWordLength(next, current, n)
-  }
+const frequencyMapLookup = (frequencyMap, n) => {
+  const lookup = (map, max, previous = [], [ target, frequency ] = previous) =>
+    frequency >= max || map.length === 0
+      ? target
+      : lookup(map.slice(1), max, map[0])
+  return lookup(frequencyMap, n)
 }
+
+const randomWordLength = (target = randomNumber({ min: 1, max: 15256838 })) =>
+  frequencyMapLookup(wordLengthFrequency, target)
+
+const randomLetter = (target = randomNumber({ min: 1, max: 1249 })) =>
+  frequencyMapLookup(letterFrequency, target)
 
 const randomSentenceLength = randomNumber.bind(null, { min: 50, max: 60 })
 
