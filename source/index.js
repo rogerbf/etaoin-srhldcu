@@ -1,3 +1,5 @@
+const randomNumber = require(`pick-a-number`)
+
 const letterFrequency = [
   [ `z`, 9 ],
   [ `q`, 12 ],
@@ -52,9 +54,6 @@ const wordLengthFrequency = [
   [ 2, 13129385 ],
   [ 3, 15256838 ]
 ]
-
-const randomNumber = ({ min, max }) =>
-  Math.floor(Math.random() * (1 + max - min)) + min
 
 const frequencyMapLookup = (frequencyMap, n) => {
   const lookup = (map, max, previous = [], [ target, frequency ] = previous) =>
