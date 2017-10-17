@@ -1,7 +1,7 @@
 {
   "name": "etaoin-srhldcu",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "generate nonsense words and sentences based on letter frequencies",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,12 @@
     "lint": "eslint source",
     "format": "prettier-standard \"source/**/*.js\""
   },
-  "keywords": [],
+  "keywords": [
+    "etaoin shrdlu",
+    "nonsense",
+    "ipsum",
+    "lipsum"
+  ],
   "author": "rogerbf <roger@bergfa.lk> (http://bergfa.lk/)",
   "license": "MIT",
   "devDependencies": {
@@ -36,7 +41,9 @@
     "source",
     "build"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "pick-a-number": "1.0.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rogerbf/etaoin-srhldcu.git"
