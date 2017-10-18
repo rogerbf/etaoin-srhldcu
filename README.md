@@ -1,6 +1,15 @@
 # etaoin-srhldcu
 
-## links
+Generates words and sentences based on the frequency of letters and word lengths in the english language. Based on [English Letter Frequency Counts: Mayzner Revisited or ETAOIN SRHLDCU](http://norvig.com/mayzner.html) ([archived](https://web.archive.org/web/20170724170444/http://norvig.com/mayzner.html)) by Peter Norvig.
 
-[Letter frequency](https://en.wikipedia.org/wiki/Letter_frequency#Relative_frequencies_of_letters_in_the_English_language)
-[norvig](http://norvig.com/mayzner.html)
+## usage
+
+```javascript
+import etaoin from 'etaoin-srhldcu'
+
+etaoin.word()
+// 'retvp'
+
+etaoin.sentence()
+// 'evbb etpu erhr zar naaevnee hpek tblr rvv d etr fheebnkhr.'
+```
